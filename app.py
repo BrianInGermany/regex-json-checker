@@ -58,7 +58,7 @@ def check_matches():
                if utt_string not in results.keys():
                   results[utt_string] = []
    def takeSecond(elem):
-      return elem[1]
+      return len(elem[1])
    result_list = []
    for key, val in results.items():
       result_list.append([key, val])
