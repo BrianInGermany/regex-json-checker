@@ -1,12 +1,15 @@
 <!doctype html>  
+<head>
+   <title>Regex JSON Tester</title>
+</head>
 <html>  
    <body>  
-      <h2 style = "text-align: center;">Regex Patterns to be Tested</h2>  
+      <h2 style = "text-align: center;">Regex JSON Tester</h2>  
           
-      <h3>Rules</h3>
+      <h3>Pattern Requirements</h3>
    <ul>
       <li>Double-slash all escapes and regex slashes.</li>
-      <li>Use JSON format with key "pattern" and value of the actual regex.</li>
+      <li>Use a JSON file consisting of a list of dictionaries with key "pattern" and value of a list of regexes.</li>
    </ul>
 
       <form action="/results" enctype="multipart/form-data" method="POST">
