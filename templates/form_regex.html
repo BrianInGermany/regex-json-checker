@@ -1,0 +1,23 @@
+<!doctype html>  
+<html>  
+   <body>  
+      <h2 style = "text-align: center;">Regex Patterns to be Tested</h2>  
+          
+      <h3>Rules</h3>
+   <ul>
+      <li>Double-slash all escapes and regex slashes.</li>
+      <li>Use JSON format with key "pattern" and value of the actual regex.</li>
+   </ul>
+
+      <form action="/results" enctype="multipart/form-data" method="POST">
+         <br/>
+         Upload Regex JSON:
+         <input type="file" name="regex_file" value="regex_file_value">
+         <br/>
+         Upload Line-Break Separated Strings
+         <input type="file" name="string_file" value="string_file_value">
+         <br/>
+         <input type="submit" value="Submit">
+         </form>
+   </body>  
+</html>  

@@ -1,0 +1,37 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+    <title>Regex Matches</title>  
+</head>  
+<body>  
+<h1>Regex JSON Matches</h1>  
+ 
+<div>
+    <table  border="1">
+        
+        <tr>
+        <th><font size="5">String</font></th>
+        
+        <th><font size="5">Patterns</font></th>
+        </tr>
+        <tr>
+            {% for pattern in patterns %} 
+            <tr>
+                <td>
+                    {{ pattern[0] }}
+                </td>
+                <td>
+                    <ul>
+                        {% for pat1 in pattern[1] %} 
+                        <li>{{ pat1 }}</li>
+                        {% endfor %}
+                        </ul>
+                </td>
+                
+            </tr>
+            {% endfor %} 
+    
+</div>  
+
+</body>  
+</html> 

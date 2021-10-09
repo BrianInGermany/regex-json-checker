@@ -1,0 +1,10 @@
+[
+    {
+        "intent": "DOMAIN__INTENT",
+        "pattern": [
+            ".*\\bwetter-*(?:bericht|prognose)\\b.*",
+            ".*\\bservice\\b.*",
+            ".*wet.*"
+        ]
+    }
+]
