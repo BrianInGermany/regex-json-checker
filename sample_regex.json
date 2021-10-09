@@ -6,5 +6,12 @@
             ".*\\bservice\\b.*",
             ".*wet.*"
         ]
+    },
+    {
+        "intent": "DOMAIN__INTENT_2",
+        "pattern": [
+            ".*\\d+\\sfun.*stuff.*"
+        ]
     }
+
 ]

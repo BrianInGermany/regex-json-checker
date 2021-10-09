@@ -18,19 +18,18 @@ def check_matches():
    # form = request.get_json() 
    
    # breakpoint()
-   # regexes = request.files["regex_file"]
+   regexes = request.files["regex_file"]
    
-   # strings = request.files["string_file"]
+   strings = request.files["string_file"]
    # breakpoint()
    # with open(regexes, "r", encoding="utf-8") as regexes:
    #    with open(strings,"r", encoding="utf-8") as strings:
-   regexes = request.form["regex_patterns"]
-   strings = request.form["strings"]
-   regex_json = json.loads(regexes, encoding="utf-8")
+   
+   regex_json = json.load(regexes, encoding="utf-8")
    results = {}
-   for utt_string in strings.split("\n"):
+   for utt_string in strings.readlines():
    # for utt_string in strings.split("\n"):
-      # utt_string = utt_string.decode('UTF-8')
+      utt_string = utt_string.decode('UTF-8')
       utt_string = utt_string.strip()
       utt_string = utt_string.lower()
       

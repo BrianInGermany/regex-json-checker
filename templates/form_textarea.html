@@ -1,0 +1,73 @@
+<!doctype html>  
+<head>
+   <title>Regex JSON Tester</title>
+   <style>
+      input[type=button], input[type=submit], input[type=reset] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+   </style>
+</head>
+<html>  
+   <body>  
+      <h1 style = "text-align: left;">Regex JSON Tester</h1>  
+          
+      <h3>Instructions</h3>
+   <ul>
+      <li>Double-slash all escapes and regex slashes in regexes.</li>
+      <li>Use JSON format as in placeholder text.</li>
+   
+   </ul>
+
+      <form action="/results" enctype="multipart/form-data" method="POST">
+         <br/>
+         <label for="regex_patterns"><h4>Paste Regex JSON:</h4></label>
+         <br/>
+         <textarea class="input" id="regex_patterns" name="regex_patterns" rows="20" cols="80">
+[
+   {
+      "intent": "DOMAIN__INTENT",
+      "pattern": [
+         ".*\\bwetter-*(?:bericht|prognose)\\b.*",
+         ".*\\bservice\\b.*",
+         ".*wet.*"
+      ]
+   },
+   {
+      "intent": "DOMAIN__INTENT_2",
+      "pattern": [
+         ".*\\d+\\sfun.*stuff.*",
+         ".*öffn.*"
+      ]
+   }
+]
+         </textarea>
+       
+         <br/>
+         <label for="strings"><h4>Paste Strings:</h4></label>
+         <br/>
+         <textarea class="input" id="strings" name="strings" rows="20" cols="80">
+wie ist das wetter?
+Was ist ein Dino?
+Service bitte
+ich mag pizza
+wetterprognose
+wetterbericht
+wetter prognose
+who is Brian
+what is the capital of France?
+where is Turin
+I like lobster
+au service de la France
+öffne einen Laden
+          </textarea>
+         <br/>
+         <input type="submit" value="Submit">
+         </form>
+   </body>  
+</html>  
