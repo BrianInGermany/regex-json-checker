@@ -26,7 +26,7 @@ def check_matches():
    #    with open(strings,"r", encoding="utf-8") as strings:
    regexes = request.form["regex_patterns"]
    strings = request.form["strings"]
-   regex_json = json.loads(regexes, encoding="utf-8")
+   regex_json = json.loads(regexes)
    results = {}
    for utt_string in strings.split("\n"):
    # for utt_string in strings.split("\n"):
