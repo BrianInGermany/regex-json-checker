@@ -26,7 +26,10 @@ def check_matches():
    #    with open(strings,"r", encoding="utf-8") as strings:
    regexes = request.form["regex_patterns"]
    strings = request.form["strings"]
-   regex_json = json.loads(regexes)
+   try:
+      regex_json = json.loads(regexes)
+   except:
+      return "Please ensure json is valid and retry."
    results = {}
    for utt_string in strings.split("\n"):
    # for utt_string in strings.split("\n"):
