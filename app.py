@@ -50,22 +50,34 @@ def check_matches():
             except:
                pass
             adapted_pattern = "^" + adapted_pattern + "$"
-            
-            if re.fullmatch(adapted_pattern, utt_string):
-               if utt_string in results.keys():
-                  results[utt_string].append("\"" + pattern + "\"")
-               else: 
-                  results[utt_string] = ["\"" + pattern + "\""]
-               
-            else:
-               if utt_string not in results.keys():
-                  results[utt_string] = []
-   def takeSecond(elem):
-      return len(elem[1])
+            try: 
+               if re.fullmatch(adapted_pattern, utt_string):
+                  
+                  if utt_string not in results.keys(): 
+                     results[utt_string] = []
+                     results[utt_string].append(["\"" + pattern + "\""])
+                     results[utt_string].append(pattern_object["intent"])
+                  else:
+                     if len(results[utt_string]) > 1:
+                        if results[utt_string][1] == "":
+                           results[utt_string][1] = pattern_object["intent"]
+                     results[utt_string][0].append("\"" + pattern + "\"")
+                     
+               else:
+                  if utt_string not in results.keys():
+                     results[utt_string] = []
+                     results[utt_string].append([])
+                     results[utt_string].append("")
+                  else:
+                     pass
+            except:
+               return f"Regex pattern {pattern} has an error. Fix and retry."
+   def takeSecondLen(elem):
+      return len(elem[1][0])
    result_list = []
    for key, val in results.items():
       result_list.append([key, val])
-   result_list.sort(key=takeSecond)
+   result_list.sort(key=takeSecondLen)
 
    
       
