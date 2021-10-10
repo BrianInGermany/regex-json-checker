@@ -1,4 +1,5 @@
 from codecs import encode
+from json.decoder import JSONDecodeError
 from flask import Flask, render_template, request
 import re
 import json
@@ -20,8 +21,11 @@ def check_matches():
    strings = request.form["strings"]
    try:
       regex_json = json.loads(regexes)
+      for obj in regex_json:
+         test1 = obj["name"]
+         test2 = obj["pattern"]
    except:
-      return "Please ensure json is valid and retry."
+      return "Please ensure json is valid including 'name' and 'pattern' keys, and retry."
    results = {}
    for utt_string in strings.split("\n"):
 
@@ -59,7 +63,7 @@ def check_matches():
                   else:
                      pass
             except:
-               return f"Regex pattern {pattern} has an error. Fix and retry."
+               return f"Regex pattern <b>{pattern}</b> has an error. Fix and retry."
    def takeSecondLen(elem):
       return len(elem[1][0])
    result_list = []

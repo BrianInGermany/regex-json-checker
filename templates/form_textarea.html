@@ -35,26 +35,8 @@
       "pattern": [
          "(?=.*rex.*).*\\bTyrannosaurus\\b.*",
          ".*(?:saurus|sauri).*",
-         ".*dactyl.*"   if re.fullmatch(adapted_pattern, utt_string):
-                  
-         if utt_string not in results.keys(): 
-            results[utt_string] = []
-            results[utt_string].append(["\"" + pattern + "\""])
-            results[utt_string].append(pattern_object["name"])
-         else:
-            if len(results[utt_string]) > 1:
-               if results[utt_string][1] == "":
-                  results[utt_string][1] = pattern_object["name"]
-            results[utt_string][0].append("\"" + pattern + "\"")
-            
-      else:
-         if utt_string not in results.keys():
-            results[utt_string] = []
-            results[utt_string].append([])
-            results[utt_string].append("")
-         else:
-            pass
-      ]
+         ".*dactyl.*"
+         ]
    },
    {
       "name": "DOMAIN__COWBOYS",
