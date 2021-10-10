@@ -50,28 +50,28 @@ def check_matches():
             except:
                pass
             adapted_pattern = "^" + adapted_pattern + "$"
-            try: 
-               if re.fullmatch(adapted_pattern, utt_string):
-                  
-                  if utt_string not in results.keys(): 
-                     results[utt_string] = []
-                     results[utt_string].append(["\"" + pattern + "\""])
-                     results[utt_string].append(pattern_object["intent"])
-                  else:
-                     if len(results[utt_string]) > 1:
-                        if results[utt_string][1] == "":
-                           results[utt_string][1] = pattern_object["intent"]
-                     results[utt_string][0].append("\"" + pattern + "\"")
-                     
+            # try: 
+            if re.fullmatch(adapted_pattern, utt_string):
+               
+               if utt_string not in results.keys(): 
+                  results[utt_string] = []
+                  results[utt_string].append(["\"" + pattern + "\""])
+                  results[utt_string].append(pattern_object["name"])
                else:
-                  if utt_string not in results.keys():
-                     results[utt_string] = []
-                     results[utt_string].append([])
-                     results[utt_string].append("")
-                  else:
-                     pass
-            except:
-               return f"Regex pattern {pattern} has an error. Fix and retry."
+                  if len(results[utt_string]) > 1:
+                     if results[utt_string][1] == "":
+                        results[utt_string][1] = pattern_object["name"]
+                  results[utt_string][0].append("\"" + pattern + "\"")
+                  
+            else:
+               if utt_string not in results.keys():
+                  results[utt_string] = []
+                  results[utt_string].append([])
+                  results[utt_string].append("")
+               else:
+                  pass
+            # except:
+            #    return f"Regex pattern {pattern} has an error. Fix and retry."
    def takeSecondLen(elem):
       return len(elem[1][0])
    result_list = []
