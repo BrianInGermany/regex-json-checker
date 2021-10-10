@@ -15,15 +15,7 @@ def send_patterns():
  
 @app.route('/results',methods = ['GET','POST'])  
 def check_matches(): 
-   # form = request.get_json() 
-   
-   # breakpoint()
-   # regexes = request.files["regex_file"]
-   
-   # strings = request.files["string_file"]
-   # breakpoint()
-   # with open(regexes, "r", encoding="utf-8") as regexes:
-   #    with open(strings,"r", encoding="utf-8") as strings:
+
    regexes = request.form["regex_patterns"]
    strings = request.form["strings"]
    try:
@@ -32,8 +24,7 @@ def check_matches():
       return "Please ensure json is valid and retry."
    results = {}
    for utt_string in strings.split("\n"):
-   # for utt_string in strings.split("\n"):
-      # utt_string = utt_string.decode('UTF-8')
+
       utt_string = utt_string.strip()
       utt_string = utt_string.lower()
       
@@ -42,36 +33,33 @@ def check_matches():
       for pattern_object in regex_json:
    
          for pattern in pattern_object["pattern"]:
-            # pattern = pattern.decode('UTF-8')pattern
+          
             # breakpoint()
             adapted_pattern = pattern.lower()
-            try: 
-               adapted_pattern = adapted_pattern.replace("\\\\", "\\")
-            except:
-               pass
+            
             adapted_pattern = "^" + adapted_pattern + "$"
-            # try: 
-            if re.fullmatch(adapted_pattern, utt_string):
-               
-               if utt_string not in results.keys(): 
-                  results[utt_string] = []
-                  results[utt_string].append(["\"" + pattern + "\""])
-                  results[utt_string].append(pattern_object["name"])
-               else:
-                  if len(results[utt_string]) > 1:
-                     if results[utt_string][1] == "":
-                        results[utt_string][1] = pattern_object["name"]
-                  results[utt_string][0].append("\"" + pattern + "\"")
+            try: 
+               if re.fullmatch(adapted_pattern, utt_string):
                   
-            else:
-               if utt_string not in results.keys():
-                  results[utt_string] = []
-                  results[utt_string].append([])
-                  results[utt_string].append("")
+                  if utt_string not in results.keys(): 
+                     results[utt_string] = []
+                     results[utt_string].append(["\"" + pattern + "\""])
+                     results[utt_string].append(pattern_object["name"])
+                  else:
+                     if len(results[utt_string]) > 1:
+                        if results[utt_string][1] == "":
+                           results[utt_string][1] = pattern_object["name"]
+                     results[utt_string][0].append("\"" + pattern + "\"")
+                     
                else:
-                  pass
-            # except:
-            #    return f"Regex pattern {pattern} has an error. Fix and retry."
+                  if utt_string not in results.keys():
+                     results[utt_string] = []
+                     results[utt_string].append([])
+                     results[utt_string].append("")
+                  else:
+                     pass
+            except:
+               return f"Regex pattern {pattern} has an error. Fix and retry."
    def takeSecondLen(elem):
       return len(elem[1][0])
    result_list = []
