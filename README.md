@@ -2,7 +2,7 @@
 
 - This is a flask app for testing regexes that can be uploaded to heroku, and is also available under:
 [regex-json-checker.herokuapp.com](https://regex-json-checker.herokuapp.com)
-- To execute locally, install flask (`pip install flask`) and run `python app.py`. It will open on [localhost:5000](localhost:5000).
+- To execute locally, install flask (`pip install flask`) and run `python app.py`. It will open on [127.0.0.1:5000](http://127.0.0.1:5000/).
 
 ## The following syntax must be observed for the JSON:
 - Remember to double-backslash all escapes
